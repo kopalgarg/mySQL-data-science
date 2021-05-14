@@ -1,3 +1,16 @@
+/*
+UPDATE
+SELECT DISTINCT
+ORDER BY
+AS
+WHERE (operations, inequalitites, multiple commands)
+IN, NOT IN
+BETWEEN
+LIKE
+REGEXP
+NULL 
+LIMIT
+*/
 USE sql_store;
 # update the state to VA for customer 1 
 UPDATE sql_store . customers SET state = "VA" WHERE (customer_id = 1);
@@ -70,5 +83,28 @@ select * from customers where (last_name regexp 'field$' and first_name regexp '
 # last names with field as suffix or mac as prefix in last name 
 select * from customers where last_name regexp 'field$|^mac';
 # last names with letter e but before e we have any letter from a to  i
-select * from customers where last_name regexp '[a-i]e' 
-# cont. from: https://youtu.be/7S_tz1z_5bA?t=4085
+select * from customers where last_name regexp '[a-i]e';
+# exercises
+-- first names Elka and Ambur
+select * from customers where first_name regexp 'Elka|Ambur';
+-- last names ending with ey or on
+select * from customers where last_name regexp 'ey$|on$';
+-- last names end with my or contain se
+select * from customers where last_name regexp 'my$' or last_name regexp 'se';
+-- last names containing B followed by r or u
+select * from customers where last_name regexp 'b[ru]';
+-- phone number is null
+select * from customers where phone is null;
+-- orders not shipped yet
+select * from orders where shipped_date is null;
+-- order by two col
+select first_name, last_name, points/10 AS disc from customers order by state desc, points desc;
+select *, unit_price * quantity as total_price from order_items where order_id = 2 order by total_price desc;
+-- number of records from query
+select * from customers limit 3;
+-- skip first 6 customers (offset) and pick 3 (customers 7-9)
+select * from customers limit 6,3;
+-- top 3 loyal customers
+select * from customers order by points desc limit 3
+
+
