@@ -71,6 +71,7 @@ select * from customers where (last_name regexp 'field$' and first_name regexp '
 select * from customers where last_name regexp 'field$|^mac';
 # last names with letter e but before e we have any letter from a to  i
 select * from customers where last_name regexp '[a-i]e' 
+# cont. from: https://youtu.be/7S_tz1z_5bA?t=4085
 
 
 
