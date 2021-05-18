@@ -12,4 +12,9 @@ with department_table as
 
 )
 select * from department_table
-left join name_table using(max)
+left join name_table using(max);
+
+-- solution 2
+select max(e1.sal), department 
+from Employee e1 
+group by department 
