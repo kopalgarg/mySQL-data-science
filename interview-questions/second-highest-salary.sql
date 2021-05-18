@@ -11,3 +11,7 @@ where 1 = (select count(distinct e2.Salary)
 -- solution 2
 select max(e1.sal) from Employee e1 
 where e1.sal not in (select max(e2.Salary) from Employee e2);
+
+-- solution 3
+select max(e1.sal) from Employee e1 
+where e1.sal < (select max(e2.Salary) from Employee e2);
