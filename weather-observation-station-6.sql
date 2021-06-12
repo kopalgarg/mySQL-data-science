@@ -1,0 +1,1 @@
+select CITY from STATION where CITY regexp '^A|^E|^I|^O|^U'
